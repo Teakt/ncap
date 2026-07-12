@@ -1,0 +1,5 @@
+services:
+  products-api:
+    build: ./services/products-api     # chemin vers le contexte de build, relatif au compose
+    ports:
+      - "8000:8000"    # la liste "hôte:conteneur"
