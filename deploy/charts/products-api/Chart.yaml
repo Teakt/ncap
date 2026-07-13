@@ -1,0 +1,5 @@
+apiVersion: v2
+name: products-api
+version: 1.0.0
+description: helm chart of products-api Deployment
+appVersion: "0.1.0"

@@ -1,0 +1,13 @@
+name: products-api
+image:
+  repository: products-api
+  tag: latest
+replicas: 2
+port: 8000
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "100m"
+  limits:
+    memory: "128Mi"
+    cpu: "200m"
