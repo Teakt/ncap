@@ -2,11 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.name }}
-  namespace: ncap
+  namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.name }}
 spec:
-  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: {{ .Values.name }}
