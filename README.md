@@ -9,7 +9,7 @@ Monorepository of microservices behind a Kong gateway, and deployed on Kubernete
 | Phase | Scope | Status |
 |-------|-------|--------|
 | 1. Foundations | FastAPI service, tests, Dockerfile, docker-compose | Done |
-| 2. Kubernetes | kind cluster, Helm chart, probes, HPA | Not started |
+| 2. Kubernetes | kind cluster, Helm chart, probes, HPA | Done |
 | 3. Gateway | Kong on Kubernetes, routing, auth & rate-limiting plugins | Not started |
 | 4. CI/CD | GitLab CI pipeline: lint, tests, build, Trivy scan, registry push | Not started |
 | 5. GitOps | Argo CD, app-of-apps structure, automated sync | Not started |
