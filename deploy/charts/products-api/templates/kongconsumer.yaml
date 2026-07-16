@@ -1,0 +1,10 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongConsumer
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: kong   # sans elle, le controller l'ignore
+username: partner-app
+credentials:
+- partner-app-key        # le nom du Secret

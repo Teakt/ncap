@@ -1,0 +1,6 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ .Values.kong.keyauth }}           # ex. products-api-key-auth, templatisé
+  namespace: {{ .Values.namespace }}      # ex. ncap
+plugin: key-auth
