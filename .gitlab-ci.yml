@@ -1,17 +1,23 @@
+default:
+  image: python:3.14-slim 
+
 stages:          # l'ordre des étapes du pipeline
   - lint
   - test
 
-lint-job:                          # un nom de job, libre
-  stage: lint                      # à quelle étape il appartient
-  image: python:3.14-slim          # le conteneur dans lequel il s'exécute
-  script:                          # les commandes, comme dans ton terminal
+.python-setup: &python-setup     # job "caché" (le point devant = template, non exécuté)
+  before_script:
     - cd services/products-api
     - pip install -r requirements-dev.txt
+
+lint-job:                          # un nom de job, libre
+  stage: lint                      # à quelle étape il appartient        # le conteneur dans lequel il s'exécute
+  <<: *python-setup   
+  script:                          # les commandes, comme dans ton terminal
     - ruff check app/
 
 test-job:
   stage: test
+  <<: *python-setup   
   script:
-    - cd services/products-api
     - python -m pytest
