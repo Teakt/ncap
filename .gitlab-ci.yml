@@ -1,0 +1,17 @@
+stages:          # l'ordre des étapes du pipeline
+  - lint
+  - test
+
+lint-job:                          # un nom de job, libre
+  stage: lint                      # à quelle étape il appartient
+  image: python:3.14-slim          # le conteneur dans lequel il s'exécute
+  script:                          # les commandes, comme dans ton terminal
+    - cd services/products-api
+    - pip install -r requirements-dev.txt
+    - ruff check app/
+
+test-job:
+  stage: test
+  script:
+    - cd services/products-api
+    - python -m pytest
