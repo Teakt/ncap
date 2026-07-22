@@ -4,6 +4,13 @@ default:
 stages:          # l'ordre des étapes du pipeline
   - lint
   - test
+  - build
+
+variables:
+  DOCKER_HOST: "tcp://docker:2376"
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "/certs/client"
 
 .python-setup: &python-setup     # job "caché" (le point devant = template, non exécuté)
   before_script:
@@ -21,3 +28,11 @@ test-job:
   <<: *python-setup   
   script:
     - python -m pytest
+
+build-job:
+  stage: build
+  image: docker:cli          # le client
+  services:
+    - docker:dind            # le daemon, à côté
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA ./services/products-api
