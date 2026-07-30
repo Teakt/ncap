@@ -17,8 +17,6 @@ variables:
     - cd services/products-api
     - pip install -r requirements.txt
     - pip install -r requirements-dev.txt
-
-.trivy-setup: &trivy-setup     # job "caché" 
  
 lint-job:                          # un nom de job, libre
   stage: lint                      # à quelle étape il appartient        # le conteneur dans lequel il s'exécute
