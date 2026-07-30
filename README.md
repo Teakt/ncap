@@ -40,3 +40,12 @@ Interactive OpenAPI docs: http://localhost:8000/docs.
 - HashiCorp Vault - secrets
 - Prometheus + Grafana - Metrics and monitoring
 - OAuth2/OIDC - Auth method 
+
+## 🚀 CI/CD Pipeline
+
+The project relies on an automated GitLab CI/CD pipeline to ensure code quality and security on every commit:
+- **Lint & Tests**: Fast static analysis with **Ruff** (*Fail-Fast* approach) and execution of automated tests with **Pytest**.
+- **Build & Packaging**: Docker image build tagged with the commit SHA to guarantee **immutability** and **traceability**.
+- **Security**: Multi-layer vulnerability scan (OS packages and Python dependencies) using **Trivy** enforced by a *Quality Gate*.
+
+ For detailed documentation on architecture choices, security practices, and technical trade-offs, see [docs/cicd.md](docs/cicd.md).
