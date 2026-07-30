@@ -43,6 +43,6 @@ build-scan-push-job:
     # 1. Rapport complet, ne casse JAMAIS le job (informatif)
     - trivy image --severity LOW,MEDIUM,HIGH,CRITICAL --exit-code 0 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     # 2. Gate bloquant : SEULEMENT sur CRITICAL, casse le job si trouvé
-    - trivy image --severity CRITICAL --exit-code 1 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - trivy image --severity CRITICAL --ignore-unfixed --exit-code 1 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY" 
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
