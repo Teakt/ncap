@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: products-api
+  namespace: argocd          # l'Application vit dans le namespace d'Argo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Teakt/ncap.git
+    targetRevision: develop
+    path: deploy/charts/products-api
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc   # le cluster local (in-cluster)
+    namespace: ncap
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
