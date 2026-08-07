@@ -2,7 +2,7 @@ name: products-api
 namespace: ncap
 image:
   repository: registry.gitlab.com/teakt/ncap
-  tag: 5881b7a
+  tag: 5881b7a0
 imagePullSecret: gitlab-registry
 port: 8000
 resources:
